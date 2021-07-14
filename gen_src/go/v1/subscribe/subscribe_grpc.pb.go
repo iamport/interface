@@ -11,6 +11,7 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
 // SubscribeServiceClient is the client API for SubscribeService service.
@@ -132,7 +133,7 @@ type UnsafeSubscribeServiceServer interface {
 }
 
 func RegisterSubscribeServiceServer(s grpc.ServiceRegistrar, srv SubscribeServiceServer) {
-	s.RegisterService(&_SubscribeService_serviceDesc, srv)
+	s.RegisterService(&SubscribeService_ServiceDesc, srv)
 }
 
 func _SubscribeService_OnetimePaymentRPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -243,7 +244,10 @@ func _SubscribeService_GetScheduledPaymentByCustomerUidRPC_Handler(srv interface
 	return interceptor(ctx, in, info, handler)
 }
 
-var _SubscribeService_serviceDesc = grpc.ServiceDesc{
+// SubscribeService_ServiceDesc is the grpc.ServiceDesc for SubscribeService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SubscribeService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "subscribe.SubscribeService",
 	HandlerType: (*SubscribeServiceServer)(nil),
 	Methods: []grpc.MethodDesc{

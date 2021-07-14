@@ -1,0 +1,51 @@
+syntax = "proto3";
+package certification;
+
+import "google/api/annotations.proto";
+option go_package = "github.com/iamport/interface/gen_src/go/v1/certification";
+option csharp_namespace = "V1.Certification";
+
+service CertificationService {
+    rpc CertificationGetRPC(CertificationRequest) returns (CertificationResponse) {
+        option (google.api.http) = {
+            get: "/api/payments/v1/certifications/{imp_uid}"
+        };
+    }
+
+    rpc CertificationDeleteRPC(CertificationRequest) returns (CertificationResponse) {
+        option (google.api.http) = {
+            delete: "/api/payments/v1/certifications/{imp_uid}"
+        };
+    }
+}
+
+message CertificationRequest {
+    string imp_uid = 1;
+}
+
+message CertificationResponse {
+    int32 code = 1;
+    string message = 2;
+    Certification response = 3;
+}
+
+message Certification {
+    string imp_uid = 1;
+    string merchant_uid = 2;
+    string pg_tid = 3;
+    string pg_provider = 4;
+    string name = 5;
+    string gender = 6;
+    int32 birth = 7;
+    string birthday = 8;
+    bool foreigner = 9;
+    string phone = 10;
+    string carrier = 11;
+    bool certified = 12;
+    int32 certified_at = 13;
+    string unique_key = 14;
+    string unique_in_site = 15;
+    string origin = 16;
+}
+
+

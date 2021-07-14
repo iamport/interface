@@ -1,7 +1,5 @@
 PROTO_PATH=./src
-SRC = src/google/api/annotations.proto src/google/api/http.proto \
-      src/v1/authenticate/token.proto src/v1/payment/payment.proto src/v1/escrow/escrow.proto src/v1/subscribe/subscribe.proto src/v1/subscribe_customers/subscribe_customers.proto \
-	  src/v2/basis/basis.proto src/v2/authenticate/authenticate.proto src/v2/payments/card/card.proto src/v2/txs/txs.proto
+SRC = $(shell find src -iname "*.proto" | grep -v src/google) src/google/api/annotations.proto src/google/api/http.proto
 
 GEN_SRC_ROOT = ./gen_src
 GEN_SRC_CSHARP = $(GEN_SRC_ROOT)/csharp

@@ -11,6 +11,7 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
 // EscrowServiceClient is the client API for EscrowService service.
@@ -76,7 +77,7 @@ type UnsafeEscrowServiceServer interface {
 }
 
 func RegisterEscrowServiceServer(s grpc.ServiceRegistrar, srv EscrowServiceServer) {
-	s.RegisterService(&_EscrowService_serviceDesc, srv)
+	s.RegisterService(&EscrowService_ServiceDesc, srv)
 }
 
 func _EscrowService_EscrowPostRPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -115,7 +116,10 @@ func _EscrowService_EscrowPutRPC_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-var _EscrowService_serviceDesc = grpc.ServiceDesc{
+// EscrowService_ServiceDesc is the grpc.ServiceDesc for EscrowService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var EscrowService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "escrow.EscrowService",
 	HandlerType: (*EscrowServiceServer)(nil),
 	Methods: []grpc.MethodDesc{

@@ -11,6 +11,7 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
 // AuthenticateServiceClient is the client API for AuthenticateService service.
@@ -76,7 +77,7 @@ type UnsafeAuthenticateServiceServer interface {
 }
 
 func RegisterAuthenticateServiceServer(s grpc.ServiceRegistrar, srv AuthenticateServiceServer) {
-	s.RegisterService(&_AuthenticateService_serviceDesc, srv)
+	s.RegisterService(&AuthenticateService_ServiceDesc, srv)
 }
 
 func _AuthenticateService_TokenV2RPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -115,7 +116,10 @@ func _AuthenticateService_RegisterPubKeyV2RPC_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-var _AuthenticateService_serviceDesc = grpc.ServiceDesc{
+// AuthenticateService_ServiceDesc is the grpc.ServiceDesc for AuthenticateService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var AuthenticateService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "authenticate_v2.AuthenticateService",
 	HandlerType: (*AuthenticateServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
